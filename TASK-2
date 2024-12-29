@@ -1,0 +1,80 @@
+//*The Student Grade Tracker is a Java program that calculates a student's average grade, letter grade, and GPA based on grades entered for multiple subjects or assignments. It allows for easy tracking and evaluation of academic performance. Below is a simple breakdown
+Input Student Information:
+
+The user enters the student's name.
+The user specifies the number of subjects or assignments to track.
+Input Grades:
+
+The program collects grades for each subject/assignment through a loop.
+Calculate Results:
+
+Computes the average grade.
+Determines the letter grade (A, B, C, D, F) based on the average grade.
+Calculates the corresponding GPA (4.0 scale).
+Display Output:
+
+Outputs the student's name, number of subjects, average grade, letter grade, and GPA.
+Error-Free Execution:
+
+Ensures grades are correctly averaged.
+Closes the scanner to avoid resource leaks.*//
+
+import java.util.Scanner;
+
+public class StudentGradeTracker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Get student's name
+        System.out.print("Enter the student's name: ");
+        String studentName = scanner.nextLine();
+        
+        // Number of subjects or assignments
+        System.out.print("Enter the number of subjects/assignments: ");
+        int numSubjects = scanner.nextInt();
+        
+        double totalGrades = 0;
+        
+        // Loop to input grades for each subject/assignment
+        for (int i = 1; i <= numSubjects; i++) {
+            System.out.print("Enter grade for subject " + i + ": ");
+            double grade = scanner.nextDouble();
+            totalGrades += grade;
+        }
+        
+        // Calculate the average grade
+        double averageGrade = totalGrades / numSubjects;
+        
+        // Determine the letter grade and GPA
+        char letterGrade;
+        double gpa;
+        
+        if (averageGrade >= 90) {
+            letterGrade = 'A';
+            gpa = 4.0;
+        } else if (averageGrade >= 80) {
+            letterGrade = 'B';
+            gpa = 3.0;
+        } else if (averageGrade >= 70) {
+            letterGrade = 'C';
+            gpa = 2.0;
+        } else if (averageGrade >= 60) {
+            letterGrade = 'D';
+            gpa = 1.0;
+        } else {
+            letterGrade = 'F';
+            gpa = 0.0;
+        }
+        
+        // Display the results
+        System.out.println("\nStudent Name: " + studentName);
+        System.out.println("Total Subjects/Assignments: " + numSubjects);
+        System.out.println("Average Grade: " + averageGrade);
+        System.out.println("Letter Grade: " + letterGrade);
+        System.out.println("GPA: " + gpa);
+        
+        // Close the scanner
+        scanner.close();
+    }
+}
